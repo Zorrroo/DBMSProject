@@ -1,4 +1,3 @@
-# DBMS Project
 # Database Management Project
 
 Welcome to our database management project repository! This project primarily focuses on database management, utilizing various technologies and tools to implement a comprehensive solution. Our college project for the Database Management course at IIIT Kalyani.
@@ -15,7 +14,7 @@ This project is a culmination of our efforts to apply the principles and techniq
 
 ## Features
 
-- TBD
+- Will be announced soon...
 
 ## Getting Started
 
@@ -37,8 +36,3 @@ To get started with the project, follow these steps:
 ## Feedback and Contributions
 
 We welcome feedback and contributions from the community. If you have any suggestions, find a bug, or want to contribute, feel free to open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](link to license file).
-
