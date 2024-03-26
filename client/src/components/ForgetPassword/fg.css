@@ -36,7 +36,7 @@ input {
     outline: none;
 }
 
-LoginBtn {
+.LoginBtn {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -45,6 +45,6 @@ LoginBtn {
     cursor: pointer;
 }
 
-LoginBtn:hover {
+.LoginBtn:hover {
     background-color: #0056b3;
 }
