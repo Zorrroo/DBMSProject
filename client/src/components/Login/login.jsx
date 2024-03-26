@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./login.css";
 import { Link } from "react-router-dom";
 
@@ -6,6 +7,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory(); // Initialize useHistory hook
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -19,6 +21,9 @@ const Login = () => {
       });
       const data = await response.json();
       console.log(data);
+      if (response.ok) {
+        history.push("/home");
+      }
     } catch (error) {
       console.error("Error submitting login data:", error);
     }

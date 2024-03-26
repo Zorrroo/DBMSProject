@@ -1,5 +1,6 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
+const jwt = require('jsonwebtoken');
 const app = express();
 const port = 4000;
 
@@ -11,14 +12,27 @@ const db = new sqlite3.Database('./database.db', (err) => {
   console.log('Connected to SQLite database');
 });
 
-app.get('/login', (req, res) => {
-  db.all('SELECT * FROM users', (error, rows) => {
-    if (error) {
-      console.error('Error querying database:', error);
-      res.status(500).send('Error querying database');
+app.use(express.json()); 
+
+app.post("/login", async (request, response) => {
+  const { username, email, password } = request.body; 
+  const query = `
+    SELECT *
+    FROM users
+    WHERE username = ? AND email = ? AND password = ?
+  `;
+  db.get(query, [username, email, password], (err, row) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      response.status(500).send('Internal Server Error');
       return;
     }
-    res.json(rows);
+    if (row) {
+      const token = jwt.sign({ username, email }, 'your_secret_key_here');
+      response.json({ token });
+    } else {
+      response.status(401).send('Unauthorized');
+    }
   });
 });
 

@@ -5,7 +5,7 @@ import Login from './components/Login/login.jsx';
 import Signup from './components/Signup/signup.jsx';
 import Travel from './components/Travel/travel.jsx';
 // import About from './components/About/about.jsx';
-// import ForgetPassword from './components/ForgetPassword/fg.jsx';
+import ForgetPassword from './components/ForgetPassword/fg.jsx';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/travel" exact element={<Travel />} />
         {/* <Route path="/about" exact element={About} /> */}
-        {/* <Route path="/forget_password" exact element={ForgetPassword} /> */}
+        <Route path="/forget_password" exact element={ForgetPassword} />
       </Routes>
     </Router>
   );
