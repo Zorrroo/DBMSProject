@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./login.css";
 import { Link } from "react-router-dom";
 
@@ -7,7 +7,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const history = useHistory(); // Initialize useHistory hook
+  const history = useNavigate(); // Initialize useNavigate hook
 
   const handleSubmit = async (event) => {
     event.preventDefault();
