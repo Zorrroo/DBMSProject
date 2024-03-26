@@ -118,7 +118,7 @@ const Signup = () => {
         </p>
       </div>
       <div className="signup-form">
-        <h2>signup</h2>
+        <h2>Ready to create an account</h2>
         <form onSubmit={handleSubmit}>
           {usernameField()}
           {emailField()}

@@ -82,13 +82,11 @@ const ForgetPassword = () => {
       <div className="welcome-message">
         <h1>Welcome to PlanYourTrip</h1>
         <p>
-          Getting bored studying and coding at home and hostel. Join us lets
-          explore the nature and beauty of the earth with eyes not with a
-          camera.
+          Keep a password that you use in your daily life so that you need not visit this page every time...
         </p>
       </div>
       <div className="login-form">
-        <h2>Login</h2>
+        <h2>Reset Your Password</h2>
         <form onSubmit={handleSubmit}>
           {usernameField()}
           {emailField()}
@@ -96,9 +94,6 @@ const ForgetPassword = () => {
           <button type="submit" className="LoginBtn">
             Login
           </button>
-
-          <Link to="/signup">Don&apos;t have an account? Sign up</Link>
-          <Link to="/forget_password">Forgot Password?</Link>
         </form>
       </div>
     </div>

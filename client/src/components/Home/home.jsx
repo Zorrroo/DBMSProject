@@ -1,8 +1,14 @@
+import Navbar from "/src/components/Navbar/navbar.jsx"
+import Footer from "/src/components/Footer/footer.jsx"
 import './home.css'
 
 const Home = () => {
     return (
-        <div>This is Home Component</div>
+        <>
+            <Navbar />
+                <div>This is Home Component</div>
+            <Footer />
+        </>
     )   
 }
 export default Home
