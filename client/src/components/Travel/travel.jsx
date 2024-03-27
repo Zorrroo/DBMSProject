@@ -1,10 +1,12 @@
+import Navbar from "/src/components/Navbar/navbar.jsx"
+import Footer from "/src/components/Footer/footer.jsx"
 import "./travel.css";
 import { IoSearchSharp } from "react-icons/io5";
 
 const Travel = () => {
   const searchField = () => {
     return (
-        <div className="container1">
+      <div className="container1">
           <div className="searchField">
             <button className="searchIcon" type="button">
               <IoSearchSharp size={20} />
@@ -25,6 +27,8 @@ const Travel = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="travelComponent">
       {searchField()}
       <div>
@@ -32,6 +36,8 @@ const Travel = () => {
         <img src="/src/assets/train.png" alt="image" className="image" />
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 export default Travel;
