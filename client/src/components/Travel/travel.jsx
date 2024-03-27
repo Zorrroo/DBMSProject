@@ -28,8 +28,8 @@ const Travel = () => {
     <div className="travelComponent">
       {searchField()}
       <div>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUeA_CMTpstbWlz6WrmMLjzFJCdK5oyyxXNNuYhzDGyA&s" alt="image" className="image" />
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUeA_CMTpstbWlz6WrmMLjzFJCdK5oyyxXNNuYhzDGyA&s" alt="image" className="image" />
+        <img src="/src/assets/airplane.png" alt="image" className="image" />
+        <img src="/src/assets/train.png" alt="image" className="image" />
       </div>
     </div>
   );
