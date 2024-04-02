@@ -11,7 +11,7 @@
   z-index: 999;
   width: 100%;
   transition: background-color 0.3s ease;
-  background-image: linear-gradient(to right, #f2f3e4, #6ecbdd);
+  background-image: linear-gradient(to right, #b966d4, #d7df69);
   backdrop-filter: blur(10px);
   transition-duration: 3s;
 }
@@ -155,7 +155,7 @@
 }
 .nav-logo-heading{
   font-family: 'Roboto';
-  color: #216c5de6;
+  color: #020706e6;
   font-size: 24px;
   margin-top: 12px;
   margin-bottom: 10px;

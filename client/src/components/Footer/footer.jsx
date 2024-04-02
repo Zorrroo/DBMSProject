@@ -19,7 +19,7 @@ const Footer =()=>{
             <h1 className="heading-footer">
               <span className="startingletter">Plan</span>YouTrip
             </h1>
-            <img src="./logo.png" alt="Logo" className="foot-image" />
+            <img src="./nobglogo.png" alt="Logo" className="foot-image" />
           </div>
           <p className="homaid-desc">
             Let us be your trusted partner in creating solutions that resonate
