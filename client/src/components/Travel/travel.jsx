@@ -65,6 +65,7 @@ const Travel = () => {
           />
         </div>
       </div>
+      <div id="results"></div>
       <Footer />
     </>
   );
