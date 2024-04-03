@@ -1,3 +1,9 @@
+.result {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
 .travel-para{
     margin-top: 20px;
     font-size: 24px;

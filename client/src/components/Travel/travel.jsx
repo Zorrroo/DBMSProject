@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from "/src/components/Navbar/navbar.jsx";
 import Footer from "/src/components/Footer/footer.jsx";
 import "./travel.css";
@@ -8,7 +8,25 @@ const Travel = () => {
   const [selectedTransport, setSelectedTransport] = useState('train');
   const [fromPlace, setFromPlace] = useState('');
   const [toPlace, setToPlace] = useState('');
+  const [results, setResults] = useState([]);
   const places = ['New York', 'London', 'Paris', 'Tokyo', 'Sydney', 'Dubai'];
+
+  useEffect(() => {
+    fetchData();
+  }, [selectedTransport, fromPlace, toPlace]);
+
+  const fetchData = async () => {
+    if (fromPlace && toPlace) {
+      let url = `http://localhost:3000/${selectedTransport}?from=${fromPlace}&to=${toPlace}`;
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setResults(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+  };
 
   const handleTransportSelection = (transport) => {
     setSelectedTransport(transport);
@@ -45,7 +63,7 @@ const Travel = () => {
               ))}
             </select>
           </div>
-          <button type="button" className="searchBtn">
+          <button type="button" className="searchBtn" onClick={fetchData}>
             Search
           </button>
         </div>
@@ -65,9 +83,20 @@ const Travel = () => {
           />
         </div>
       </div>
-      <div id="results"></div>
+      <div id="results">
+        {results.map((result, index) => (
+          <div key={index} className="result">
+            <p>{result.name}</p>
+            <p>{result.number}</p>
+            <p>{result.from}</p>
+            <p>{result.to}</p>
+            {/* Add more data fields as needed */}
+          </div>
+        ))}
+      </div>
       <Footer />
     </>
   );
 };
+
 export default Travel;
