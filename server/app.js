@@ -83,6 +83,43 @@ app.post("/login", async (request, response) => {
   });
 });
 
+app.post("/signUp", async (request, response) => {
+  const { name, email, phone, password } = request.body;
+  if (!name || !email || !phone || !password) {
+    return response
+      .status(400)
+      .json({ error: "Name, email, phone, and password are required" });
+  }
+  const checkExistingUserQuery = `
+    SELECT user_id
+    FROM users
+    WHERE email = ?
+  `;
+  db.get(checkExistingUserQuery, [email], (err, existingUser) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      return response.status(500).json({ error: "Internal Server Error" });
+    }
+    if (existingUser) {
+      return response
+        .status(401)
+        .json({ error: "User with this email already exists" });
+    }
+    const insertNewUserQuery = `
+      INSERT INTO users (name, email, phone, password)
+      VALUES (?, ?, ?, ?)
+    `;
+    db.run(insertNewUserQuery, [name, email, phone, password], function (err) {
+      if (err) {
+        console.error("Error executing query:", err);
+        return response.status(500).json({ error: "Internal Server Error" });
+      }
+      const userId = this.lastID;
+      response.json({ userId });
+    });
+  });
+});
+
 app.post("/fg", async (request, response) => {
   const { email, phone, password } = request.body;
   if (!phone || !email || !password) {
