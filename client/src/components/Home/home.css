@@ -6,22 +6,19 @@
   font-family: "Roboto", sans-serif;
   background-image: url("/client/src/assets/bgmain.webp");
 }
-
 .heading{
   text-align: center;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 40px;
   padding-bottom: 4%;
 }
-
 .content {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-
 .card {
-    border: 1px solid black;
+  border: 1px solid black;
   background: #fff;
   border-radius: 20px;
   width: 28%;
@@ -30,14 +27,16 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
+.card:hover{
+  z-index:10;
+  box-shadow: 1px 2px 23px #26395347;
+}
 .img{
   width: 100%;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
   background-size: cover;
 }
-
 .btn{
   background-color: #000;
   color: #fff;
@@ -50,14 +49,12 @@
   cursor: pointer;
   margin-bottom: 20px;
 }
-
 .btn:hover{
   background: transparent;
   color: #000;
   border: 0.5px solid black;
   font-weight: 600;
 }
-
 .actions-card{
   display: flex;
   flex-direction: row;
@@ -65,18 +62,13 @@
   align-items: center;
   margin-top: 15px;
 }
-
-
 .title {
   color: #2b3d59;
   font-size: 28px;
 }
-
 .second-text {
   color: #828fa1;
 }
-
-
 .bottom-text {
   color: #445b73;
   font-family: 'EB Garamond', serif;
@@ -84,16 +76,13 @@
   font-size: 18px;
   padding: 13px;
 }
-
 .actions {
   background: none;
   border: none;
   color: purple;
 }
 
-
 /* Media Queries */
-
 @media screen and (max-width:767px){
 
   .content{

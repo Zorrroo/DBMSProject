@@ -6,7 +6,7 @@ import './home.css';
 
 const Home = () => {
   const [data, setData] = useState([]);
-  const [error, setError] = useState(null); // State to hold fetch error
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -26,7 +26,7 @@ const Home = () => {
       })
       .catch(error => {
         console.error('Error fetching data:', error);
-        setError(error); // Set error state with the fetch error
+        setError(error);
       });
   };
 

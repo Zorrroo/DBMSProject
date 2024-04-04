@@ -1,7 +1,6 @@
 const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
 const jwt = require("jsonwebtoken");
-const cors = require("cors");
 const app = express();
 const cors = require("cors");
 const port = 4000;
