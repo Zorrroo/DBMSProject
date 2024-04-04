@@ -35,16 +35,17 @@ const Home = () => {
       <div className="card" key={item.place_id}>
         <div className="top-card">
           <img src={Images[item.place_name]} className="img" alt={item.place_name} />
-          <center>
-            <h2 className="title">{item.place_name}</h2>
+          <div className="homeCardInfo">
+            <center>
+              <h2 className="title">{item.place_name}</h2>
+            </center>
             <p className="bottom-text">Building: {item.building}</p>
             <p className="bottom-text">State: {item.state}</p>
-          </center>
-        </div>
-        <div className="bottom-card">
-          <div className="actions-card">
-            <button className="btn" id="planBtn">Let's plan</button>
           </div>
+        </div>
+        <div className="actions-card">
+          <button className="btn" id="planBtn">Check Weather</button>
+          <button className="btn" id="planBtn">Let's plan</button>
         </div>
       </div>
     ));
