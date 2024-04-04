@@ -16,15 +16,14 @@ app.use(express.json());
 
 app.get("/", async (request, response) => {
   const query = `SELECT * FROM places;`;
-  connection.query(query, (error, results, fields) => {
+  db.all(query, (error, results) => {
     if (error) {
       console.error("Error fetching data:", error);
       return response.status(500).json({ error: "Internal Server Error" });
     }
+    console.log(results);
     response.json(results);
   });
-  console.error("Error fetching data:", error);
-  response.status(500).json({ error: "Internal Server Error" });
 });
 
 app.get("/:transport", async (request, response) => {
