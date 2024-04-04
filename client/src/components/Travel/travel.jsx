@@ -38,9 +38,9 @@ const Travel = () => {
     type === "from" ? setFromPlace(place) : setToPlace(place);
   };
 
-  if (selectedTransport === "airplane") {
+  if (selectedTransport === "flights") {
     places = ["New York", "London", "Paris", "Tokyo", "Sydney", "Dubai"];
-  } else if (selectedTransport === "train") {
+  } else if (selectedTransport === "trains") {
     places = ["Delhi", "Lucknow", "Pittapuram", "Tahh", "Susi", "hgg"];
   }
 
