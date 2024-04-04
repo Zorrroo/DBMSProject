@@ -1,6 +1,7 @@
 const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
 const app = express();
 const port = 4000;
 
@@ -13,6 +14,7 @@ const db = new sqlite3.Database("./database.db", (err) => {
 });
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/", async (request, response) => {
   const query = `SELECT * FROM places;`;
@@ -21,7 +23,6 @@ app.get("/", async (request, response) => {
       console.error("Error fetching data:", error);
       return response.status(500).json({ error: "Internal Server Error" });
     }
-    console.log(results);
     response.json(results);
   });
 });

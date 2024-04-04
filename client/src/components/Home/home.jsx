@@ -57,7 +57,7 @@ const Home = () => {
         <h1 className="heading">Explore all the places</h1>
         <div className="content">
           {error ? (
-            <p>Error fetching data. Please try again later.</p>
+            <p>Error: {error.message}</p>
           ) : (
             renderCards()
           )}
