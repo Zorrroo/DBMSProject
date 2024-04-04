@@ -9,5 +9,16 @@ Content-Type: application/json
     "password":"jenny789"
 }
 
+###
+###
+
+POST http://localhost:4000/fg
+Content-Type: application/json
+
+{
+    "email": "jenny@gmail.com",
+    "phone": "9874563210",
+    "password":"jenny789"
+}
 
 ###

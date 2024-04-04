@@ -120,6 +120,7 @@ app.post("/fg", async (request, response) => {
           .status(500)
           .json({ error: "Failed to update password" });
       }
+      console.log("Successfully changed");
       response.status(200).json({ message: "Password updated successfully" });
     });
   });
