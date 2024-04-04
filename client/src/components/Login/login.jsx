@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./login.css";
+import "./login.css"; // Changed import for CSS file
 import { Link } from "react-router-dom";
 
-const Login = () => {
-  const [username, setUsername] = useState("");
+const Login = () => { // Changed component name to CustomLogin
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useNavigate(); // Initialize useNavigate hook
@@ -17,7 +16,7 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({ email, password }),
       });
       const data = await response.json();
       console.log(data);
@@ -29,77 +28,37 @@ const Login = () => {
     }
   };
 
-  const usernameField = () => {
-    return (
-      <div className="inputField">
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          id="username"
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </div>
-    );
-  };
-
-  const emailField = () => {
-    return (
-      <div className="inputField">
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          id="email"
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
-    );
-  };
-
-  const passwordField = () => {
-    return (
-      <div className="inputField">
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          id="password"
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
-    );
-  };
-
   return (
-    <div className="login-container">
-      <div className="welcome-message">
-        <h1>Welcome to PlanYourTrip</h1>
-        <p>
-          Getting bored studying and coding at home and hostel. Join us lets
-          explore the nature and beauty of the earth with eyes not with a
-          camera.
-        </p>
-      </div>
-      <div className="login-form">
-        <h2>Login</h2>
+    <div className="custom-login-container"> {/* Changed className */}
+      <div className="custom-login-form"> {/* Changed className */}
+        <h2>Welcome to PlanYourTrip</h2>
+        <p>Explore the beauty of the earth with us!</p>
         <form onSubmit={handleSubmit}>
-          {usernameField()}
-          {emailField()}
-          {passwordField()}
-          <button type="submit" className="LoginBtn">
+          <div className="custom-inputField"> {/* Changed className */}
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="custom-inputField"> {/* Changed className */}
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="custom-loginBtn"> {/* Changed className */}
             Login
           </button>
-
-          <Link to="/signup">Don&apos;t have an account? Sign up</Link>
-          <br/>
-          <Link to="/forget_password">Forgot Password?</Link>
+          <div className="custom-links"> {/* Changed className */}
+            <Link to="/signup">Sign up</Link>
+            <Link to="/forget_password">Forgot Password?</Link>
+          </div>
         </form>
       </div>
     </div>

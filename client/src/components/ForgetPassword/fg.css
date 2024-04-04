@@ -1,42 +1,45 @@
-.login-container {
+.forget-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background-color: bisque;
     width: 100vw;
     height: 100vh;
     align-items: center;
+    justify-content: center;
 }
-
-.welcome-message {
-    padding: 20px;
-}
-
-.login-form {
-    flex: 1;
-    padding: 20px;
-    width: 500px;
+.forget-form {
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    min-width: 400px;
     align-self: center;
 }
-
-
 h1 {
     font-size: 24px;
     margin-bottom: 10px;
 }
-
 p {
     font-size: 16px;
     margin-bottom: 20px;
 }
-
 input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     outline: none;
 }
-
-.LoginBtn {
+.headResetPassword{
+    text-align: center;
+    padding-bottom: 10px;
+}
+.inputField input{
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.ForgetBtn {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -44,7 +47,6 @@ input {
     border: none;
     cursor: pointer;
 }
-
-.LoginBtn:hover {
+.ForgetBtn:hover {
     background-color: #0056b3;
 }

@@ -30,7 +30,6 @@ const Signup = () => {
   const usernameField = () => {
     return (
       <div className="inputField">
-        <label htmlFor="username">Username</label>
         <input
           type="text"
           placeholder="Username"
@@ -46,7 +45,6 @@ const Signup = () => {
   const emailField = () => {
     return (
       <div className="inputField">
-        <label htmlFor="email">Email</label>
         <input
           type="email"
           placeholder="Email"
@@ -62,7 +60,6 @@ const Signup = () => {
   const passwordField = () => {
     return (
       <div className="inputField">
-        <label htmlFor="password">Password</label>
         <input
           type="password"
           placeholder="Password"
@@ -78,10 +75,9 @@ const Signup = () => {
   const confirmPasswordField = () => {
     return (
       <div className="inputField">
-        <label htmlFor="pass">Confirm Password</label>
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Confirm Password"
           value={confirmPassword}
           id="pass"
           onChange={(e) => setConfirmPassword(e.target.value)}
@@ -94,7 +90,6 @@ const Signup = () => {
   const phoneNumber = () => {
     return (
       <div className="inputField">
-        <label htmlFor="phone">Phone Number</label>
         <input
           type="number"
           placeholder="Enter Your Number"
@@ -109,16 +104,8 @@ const Signup = () => {
 
   return (
     <div className="signup-container">
-      <div className="welcome-message">
-        <h1>Welcome to PlanYourTrip</h1>
-        <p>
-          Getting bored studying and coding at home and hostel. Join us lets
-          explore the nature and beauty of the earth with eyes not with a
-          camera.
-        </p>
-      </div>
       <div className="signup-form">
-        <h2>Ready to create an account</h2>
+        <h2 className="headCreateAcc">Ready to create an account</h2>
         <form onSubmit={handleSubmit}>
           {usernameField()}
           {emailField()}

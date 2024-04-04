@@ -4,10 +4,10 @@ import "./fg.css";
 import { Link } from "react-router-dom";
 
 const ForgetPassword = () => {
-  const [username, setUsername] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const history = useNavigate(); // Initialize useNavigate hook
+  const history = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,7 +17,7 @@ const ForgetPassword = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({ email, phone, password }),
       });
       const data = await response.json();
       console.log(data);
@@ -29,16 +29,15 @@ const ForgetPassword = () => {
     }
   };
 
-  const usernameField = () => {
+  const phoneField = () => {
     return (
       <div className="inputField">
-        <label htmlFor="username">Username</label>
         <input
           type="text"
-          placeholder="Username"
-          value={username}
-          id="username"
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Phone Number"
+          value={phone}
+          id="phone"
+          onChange={(e) => setPhone(e.target.value)}
           required
         />
       </div>
@@ -48,7 +47,6 @@ const ForgetPassword = () => {
   const emailField = () => {
     return (
       <div className="inputField">
-        <label htmlFor="email">Email</label>
         <input
           type="email"
           placeholder="Email"
@@ -64,7 +62,6 @@ const ForgetPassword = () => {
   const passwordField = () => {
     return (
       <div className="inputField">
-        <label htmlFor="password">Password</label>
         <input
           type="password"
           placeholder="Password"
@@ -78,21 +75,15 @@ const ForgetPassword = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="welcome-message">
-        <h1>Welcome to PlanYourTrip</h1>
-        <p>
-          Keep a password that you use in your daily life so that you need not visit this page every time...
-        </p>
-      </div>
-      <div className="login-form">
-        <h2>Reset Your Password</h2>
+    <div className="forget-container">
+      <div className="forget-form">
+        <h2 className="headResetPassword">Reset Your Password</h2>
         <form onSubmit={handleSubmit}>
-          {usernameField()}
           {emailField()}
+          {phoneField()}
           {passwordField()}
-          <button type="submit" className="LoginBtn">
-            Login
+          <button type="submit" className="ForgetBtn">
+            Reset Password
           </button>
         </form>
       </div>

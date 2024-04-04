@@ -15,7 +15,9 @@
   backdrop-filter: blur(10px);
   transition-duration: 3s;
 }
-  
+.planspan{
+  color: bisque;
+}
 .nav-logo-header{
   display: flex; 
   justify-content: space-between;

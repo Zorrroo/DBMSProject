@@ -17,7 +17,7 @@ const Footer =()=>{
         <div className="inner-section">
           <div className="head-img-section">
             <h1 className="heading-footer">
-              <span className="startingletter">Plan</span>YouTrip
+              <span className="planspan">Plan</span>YouTrip
             </h1>
             <img src="./nobglogo.png" alt="Logo" className="foot-image" />
           </div>

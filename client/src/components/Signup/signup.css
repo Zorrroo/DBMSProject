@@ -5,37 +5,28 @@
     width: 100vw;
     height: 100vh;
     align-items: center;
+    justify-content: center;
 }
-
 .welcome-message {
     padding: 20px;
 }
-
 .signup-form {
-    flex: 1;
-    padding: 20px;
-    width: 500px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 40px;
+    min-width: 400px;
     align-self: center;
 }
-
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
 input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     outline: none;
 }
-
+.headCreateAcc{
+    text-align: center;
+    padding-bottom: 10px;
+}
 .signupBtn {
     width: 100%;
     padding: 10px;
@@ -44,11 +35,9 @@ input {
     border: none;
     cursor: pointer;
 }
-
 .signupBtn:hover {
     background-color: #0056b3;
 }
-
 .warning{
     color: red;
     font-family: "Lato";

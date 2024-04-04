@@ -64,8 +64,8 @@
     height: 55px;
     width: 55px;
   }
-  .startingletter {
-    color: #d2f138;
+  .planspan {
+    color: bisque;
   }
   .homaid-desc {
     color: white;
@@ -250,7 +250,6 @@
     color: white;
     font-family: 'Montserrat';
   }
-  
   .copyright-content{
     text-align: center;
     color: white;

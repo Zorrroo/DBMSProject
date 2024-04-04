@@ -17,34 +17,39 @@ app.use(express.json());
 app.get("/:transport", async (request, response) => {
   const transport = request.params.transport;
   const { from, to } = request.query;
-  if (transport === 'train' || transport === 'airplane') {
+  if (!from || !to) {
+    return response.status(400).json({ error: 'Both from and to parameters are required' });
+  }
+  if (transport !== 'train' && transport !== 'airplane') {
+    return response.status(400).json({ error: 'Invalid transport mode' });
+  }
+
+  try {
     const query = `SELECT * FROM ${transport} WHERE from_location = ? AND to_location = ?`;
     connection.query(query, [from, to], (error, results, fields) => {
       if (error) {
         console.error('Error fetching data:', error);
-        response.status(500).json({ error: 'Internal Server Error' });
-        return;
+        return response.status(500).json({ error: 'Internal Server Error' });
       }
       response.json(results);
     });
-  } else {
-    response.status(400).json({ error: 'Invalid transport mode' });
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    response.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
 
 app.post("/login", async (request, response) => {
-  const { username, email, password } = request.body; 
-  if (!username || !email || !password) {
+  const { name, email, password } = request.body; 
+  if (!name || !email || !password) {
     return response.status(400).json({ error: "Name, email, and password are required" });
   }
-
   const query = `
     SELECT user_id, password
     FROM users
-    WHERE username = ? AND email = ?
+    WHERE name = ? AND email = ?
   `;
-
   db.get(query, [name, email], (err, row) => {
     if (err) {
       console.error('Error executing query:', err);
@@ -53,13 +58,10 @@ app.post("/login", async (request, response) => {
     if (!row) {
       return response.status(401).json({ error: 'Invalid name or email' });
     }
-    // Check if passwords match
     if (row.password !== password) {
       return response.status(401).json({ error: 'Invalid password' });
     }
-
-    const token = jwt.sign({ userId: row.user_id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
+    const token = row.user_id
     response.json({ token });
   });
 });

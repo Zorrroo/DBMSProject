@@ -9,7 +9,7 @@ const Travel = () => {
   const [fromPlace, setFromPlace] = useState('');
   const [toPlace, setToPlace] = useState('');
   const [results, setResults] = useState([]);
-  const places = ['New York', 'London', 'Paris', 'Tokyo', 'Sydney', 'Dubai'];
+  let places = [];
 
   useEffect(() => {
     fetchData();
@@ -30,11 +30,19 @@ const Travel = () => {
 
   const handleTransportSelection = (transport) => {
     setSelectedTransport(transport);
+    setFromPlace('');
+    setToPlace('');
   };
 
   const handlePlaceSelection = (place, type) => {
     type === 'from' ? setFromPlace(place) : setToPlace(place);
   };
+
+  if (selectedTransport === 'airplane') {
+    places = ['New York', 'London', 'Paris', 'Tokyo', 'Sydney', 'Dubai'];
+  } else if (selectedTransport === 'train') {
+    places = ['Delhi', 'Lucknow', 'Pittapuram', 'Tahh', 'Susi', 'hgg'];
+  }
 
   return (
     <>
