@@ -15,7 +15,7 @@ const About = () => {
                 <div className="memberspics">
                 <div className="details">
                         <img src="https://scontent.cdninstagram.com/v/t51.2885-19/296457828_6141059785909881_6334318010954922576_n.jpg?stp=dst-jpg_s120x120&_nc_cat=109&ccb=1-7&_nc_sid=3fd06f&_nc_ohc=Soht-gS9qQsAX8BxwVb&_nc_ht=scontent.cdninstagram.com&oh=00_AfA7NYkekjqM5x5kSAT0qMR8XkQ_OFrhIzxAVU7z015agQ&oe=6612C58B" alt="yaswanth" className="image-person" />
-                        <p>Name: Bellana Yaswanth<br/>Main Work: Web Coder</p>
+                        <p>Name: Bellana Yaswanth<br/>Main Work: Web Developer</p>
                     </div>
                     <div className="details">
                         <img src="https://scontent.cdninstagram.com/v/t51.2885-19/358363378_1400724590522989_5511303305914956076_n.jpg?stp=dst-jpg_s120x120&_nc_cat=111&ccb=1-7&_nc_sid=3fd06f&_nc_ohc=XYBz3MSBJLgAX_m59l8&_nc_ht=scontent.cdninstagram.com&oh=00_AfCQN-bqhHpKhlryEF3cnJsExaJNzhXXAxMgF_mV9jL9NA&oe=6612C28C" alt="dileep" className="image-person" />

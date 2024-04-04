@@ -13,7 +13,7 @@ const Images = {
     "Victoria Memorial" : "https://www.gettyimages.in/detail/photo/victoria-memorial-chowringhee-kolkata-west-bengalroyalty-free-image/91995999", 
     "Howrah Bridge" : "https://www.gettyimages.in/detail/photo/howrah-bridge-in-kolkata-royalty-freeimage/536118936", 
     "Bishnupur Temples" : "https://www.gettyimages.in/detail/photo/terracottatemple-bishnupur-royalty-free-image/151660134", 
-    "Dakshineswar Kali Temple" : "https://www.tripadvisor.in/Attraction_Review-g304558-d3952876-ReviewsDakshineswar_Kali_Temple-Kolkata_Calcutta_Kolkata_District_West_Bengal.html"
+    "Dakshineswar Kali Temple" : "https://www.tripadvisor.in/Attraction_Review-g304558-d3952876-ReviewsDakshineswar_Kali_Temple-Kolkata_Calcutta_Kolkata_District_West_Bengal.html",
     "Moti Masjid" : "https://www.gettyimages.in/detail/photo/agra-fort-moti-masjid-pearl-mosque-royalty-free-image/522009566",
     "Fatehpur Sikri" : "https://www.gettyimages.in/detail/photo/fatehpur-sikri-in-india-royalty-free-image/577575641",
     "Mehtab Garden" : "https://agratourism.in/images//tourist-places/mehtab-bagh-agra/mehtab-bagh-agra-tourism-holidays-closed-on-timings.jpg",

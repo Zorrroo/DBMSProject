@@ -1,37 +1,49 @@
-import Navbar from "/src/components/Navbar/navbar.jsx"
-import Footer from "/src/components/Footer/footer.jsx"
+import Navbar from "/src/components/Navbar/navbar.jsx";
+import Footer from "/src/components/Footer/footer.jsx";
+import Images from "./imageData.js";
 import React, { useState, useEffect } from 'react';
-import './home.css'
+import './home.css';
 
 const Home = () => {
   const [data, setData] = useState([]);
+  const [error, setError] = useState(null); // State to hold fetch error
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = () => {
-    fetch('http://localhost:4000')
-      .then(response => response.json())
-      .then(data => setData(data))
-      .catch(error => console.error('Error fetching data:', error));
+    fetch('http://localhost:4000/')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setData(data);
+        setError(null); // Reset error state if fetch is successful
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setError(error); // Set error state with the fetch error
+      });
   };
 
   const renderCards = () => {
-    return data.map((item, index) => (
-      <div className="card" key={index}>
+    return data.map((item) => (
+      <div className="card" key={item.place_id}>
         <div className="top-card">
-          <img src={`./${item.image}`} className="img" alt={item.title} />
+          <img src={Images[item.place_name]} className="img" alt={item.place_name} />
           <center>
-            <h2 className="title">{item.title}</h2>
-            <p className="bottom-text">{item.type}</p>
+            <h2 className="title">{item.place_name}</h2>
+            <p className="bottom-text">Building: {item.building}</p>
             <p className="bottom-text">State: {item.state}</p>
-            <p className="bottom-text">Near By station: {item.station}</p>
           </center>
         </div>
         <div className="bottom-card">
           <div className="actions-card">
-            <button className="btn" id="washroomCleanBtn">Let's plan</button>
+            <button className="btn" id="planBtn">Let's plan</button>
           </div>
         </div>
       </div>
@@ -40,17 +52,20 @@ const Home = () => {
 
   return (
     <>
-    <Navbar />
-    <div className="main-container">
-      <h1 className="heading">Explore all the places</h1>
-      <div className="content">
-        {renderCards()}
+      <Navbar />
+      <div className="main-container">
+        <h1 className="heading">Explore all the places</h1>
+        <div className="content">
+          {error ? (
+            <p>Error fetching data. Please try again later.</p>
+          ) : (
+            renderCards()
+          )}
+        </div>
       </div>
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 };
 
 export default Home;
-

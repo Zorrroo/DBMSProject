@@ -3,7 +3,6 @@
 
 .main-container{
   width: 100%;
-  height: 100vh;
   font-family: "Roboto", sans-serif;
   background-image: url("/client/src/assets/bgmain.webp");
 }
