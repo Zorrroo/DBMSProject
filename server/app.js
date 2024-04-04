@@ -14,6 +14,19 @@ const db = new sqlite3.Database('./database.db', (err) => {
 
 app.use(express.json()); 
 
+app.get("/", async (request, response) => {
+  const query = `SELECT * FROM places;`;
+  connection.query(query, (error, results, fields) => {
+    if (error) {
+      console.error('Error fetching data:', error);
+      return response.status(500).json({ error: 'Internal Server Error' });
+    }
+    response.json(results);
+  });
+  console.error('Error fetching data:', error);
+  response.status(500).json({ error: 'Internal Server Error' });
+});
+
 app.get("/:transport", async (request, response) => {
   const transport = request.params.transport;
   const { from, to } = request.query;
@@ -65,6 +78,48 @@ app.post("/login", async (request, response) => {
     response.json({ token });
   });
 });
+
+
+app.post("/fg", async (request, response) => {
+  const { email, phone, password } = request.body; 
+  if (!phone || !email || !password) {
+    return response.status(400).json({ error: "Phone, email, password are required" });
+  }
+
+  const query = `
+    SELECT *
+    FROM users
+    WHERE phone = ? AND email = ?
+  `;
+  
+  db.get(query, [phone, email], (err, row) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      return response.status(500).json({ error: 'Internal Server Error' });
+    }
+    if (!row) {
+      return response.status(401).json({ error: 'User with provided phone and email not found' });
+    }
+
+    const updateQuery = `
+      UPDATE users
+      SET password = ?
+      WHERE phone = ? AND email = ?
+    `;
+    db.run(updateQuery, [password, phone, email], (err) => {
+      if (err) {
+        console.error('Error updating password:', err);
+        return response.status(500).json({ error: 'Failed to update password' });
+      }
+      response.status(200).json({ message: 'Password updated successfully' });
+    });
+  });
+});
+
+app.get("/reviewPlace", async (request, response) => {});
+
+
+
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
