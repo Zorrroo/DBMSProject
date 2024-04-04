@@ -41,3 +41,8 @@ GET http://localhost:4000/
 Content-Type: application/json
 
 ###
+###
+
+GET http://localhost:4000/trains?from=Mumbai&to=Durgapura
+
+###

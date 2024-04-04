@@ -3,6 +3,7 @@ const sqlite3 = require("sqlite3").verbose();
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const app = express();
+const cors = require("cors");
 const port = 4000;
 
 const db = new sqlite3.Database("./database.db", (err) => {
@@ -35,12 +36,12 @@ app.get("/:transport", async (request, response) => {
       .status(400)
       .json({ error: "Both from and to parameters are required" });
   }
-  if (transport !== "train" && transport !== "airplane") {
+  if (transport !== "trains" && transport !== "flights") {
     return response.status(400).json({ error: "Invalid transport mode" });
   }
 
   try {
-    const query = `SELECT * FROM ${transport} WHERE from_location = ? AND to_location = ?`;
+    const query = `SELECT * FROM ${transport} WHERE departure = ? AND destination = ?`;
     connection.query(query, [from, to], (error, results, fields) => {
       if (error) {
         console.error("Error fetching data:", error);
