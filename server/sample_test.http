@@ -3,11 +3,10 @@
 POST http://localhost:4000/login
 Content-Type: application/json
 
-{    
-    "": "",
-    "": "",
-    "":"",
-    "":""
+{
+    "name": "Jenny",
+    "email": "jenny@gmail.com",
+    "password":"jenny789"
 }
 
 
