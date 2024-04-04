@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import Navbar from "/src/components/Navbar/navbar.jsx";
 import Footer from "/src/components/Footer/footer.jsx";
 import "./travel.css";
 import { IoSearchSharp } from "react-icons/io5";
 
 const Travel = () => {
-  const [selectedTransport, setSelectedTransport] = useState('train');
-  const [fromPlace, setFromPlace] = useState('');
-  const [toPlace, setToPlace] = useState('');
+  const [selectedTransport, setSelectedTransport] = useState("trains");
+  const [fromPlace, setFromPlace] = useState("");
+  const [toPlace, setToPlace] = useState("");
   const [results, setResults] = useState([]);
   let places = [];
 
@@ -23,25 +23,25 @@ const Travel = () => {
         const data = await response.json();
         setResults(data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     }
   };
 
   const handleTransportSelection = (transport) => {
     setSelectedTransport(transport);
-    setFromPlace('');
-    setToPlace('');
+    setFromPlace("");
+    setToPlace("");
   };
 
   const handlePlaceSelection = (place, type) => {
-    type === 'from' ? setFromPlace(place) : setToPlace(place);
+    type === "from" ? setFromPlace(place) : setToPlace(place);
   };
 
-  if (selectedTransport === 'airplane') {
-    places = ['New York', 'London', 'Paris', 'Tokyo', 'Sydney', 'Dubai'];
-  } else if (selectedTransport === 'train') {
-    places = ['Delhi', 'Lucknow', 'Pittapuram', 'Tahh', 'Susi', 'hgg'];
+  if (selectedTransport === "airplane") {
+    places = ["New York", "London", "Paris", "Tokyo", "Sydney", "Dubai"];
+  } else if (selectedTransport === "train") {
+    places = ["Delhi", "Lucknow", "Pittapuram", "Tahh", "Susi", "hgg"];
   }
 
   return (
@@ -53,41 +53,63 @@ const Travel = () => {
             <button className="searchIcon" type="button">
               <IoSearchSharp size={20} />
             </button>
-            <select className="searchInput" onChange={(e) => handlePlaceSelection(e.target.value, 'from')}>
+            <select
+              className="searchInput"
+              onChange={(e) => handlePlaceSelection(e.target.value, "from")}
+            >
               <option value="">From</option>
-              {places.map(place => (
-                place !== toPlace && <option key={place} value={place}>{place}</option>
-              ))}
+              {places.map(
+                (place) =>
+                  place !== toPlace && (
+                    <option key={place} value={place}>
+                      {place}
+                    </option>
+                  )
+              )}
             </select>
           </div>
           <div className="searchField">
             <button className="searchIcon" type="button">
               <IoSearchSharp size={20} />
             </button>
-            <select className="searchInput" onChange={(e) => handlePlaceSelection(e.target.value, 'to')}>
+            <select
+              className="searchInput"
+              onChange={(e) => handlePlaceSelection(e.target.value, "to")}
+            >
               <option value="">To</option>
-              {places.map(place => (
-                place !== fromPlace && <option key={place} value={place}>{place}</option>
-              ))}
+              {places.map(
+                (place) =>
+                  place !== fromPlace && (
+                    <option key={place} value={place}>
+                      {place}
+                    </option>
+                  )
+              )}
             </select>
           </div>
           <button type="button" className="searchBtn" onClick={fetchData}>
             Search
           </button>
         </div>
-        <p className='travel-para'>Select which mode of transportation do you like?</p>
+        <p className="travel-para">
+          Select which mode of transportation do you like?
+        </p>
         <div>
           <img
             src="/src/assets/train.png"
             alt="train"
-            className={selectedTransport === 'train' ? 'image selected' : 'image'}
-            onClick={() => handleTransportSelection('train')}
+            className={
+              selectedTransport === "trains" ? "image selected" : "image"
+            }
+            onClick={() => handleTransportSelection("train")}
           />
           <img
             src="/src/assets/airplane.png"
             alt="airplane"
-            className={selectedTransport === 'airplane' ? 'image selected' : 'image'}
-            onClick={() => handleTransportSelection('airplane')}
+            className={
+              selectedTransport === "flights" ? "image selected" : "image"
+            }
+            onClick={() => handleTransportSelection("airplane")}
           />
         </div>
       </div>
