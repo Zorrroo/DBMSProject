@@ -92,15 +92,20 @@ const Travel = () => {
         </div>
       </div>
       <div id="results">
-        {results.map((result, index) => (
-          <div key={index} className="result">
-            <p>{result.name}</p>
-            <p>{result.number}</p>
-            <p>{result.from}</p>
-            <p>{result.to}</p>
-            {/* Add more data fields as needed */}
-          </div>
-        ))}
+        <div className="resultsdisplay">
+          {results.map((result, index) => (
+            <div key={index} className="eachOne">
+              <p className="p">{result.name}</p>
+              <div className="subContainerResult">
+                <p className="p paratt1">{result.type}</p>
+                <p className="p paratt2">{result.trainNumber}</p>
+              </div>
+              <p className="p">{result.from}</p>
+              <p className="p">{result.to}</p>
+              <p className="p">{result.time}</p>
+            </div>
+          ))}
+        </div>
       </div>
       <Footer />
     </>
