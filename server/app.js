@@ -56,7 +56,6 @@ app.get("/", async (request, response) => {
     });
 
     const data = await Promise.all(promises);
-    console.log(data);
     response.json(data);
   } catch (error) {
     console.error("Error:", error);

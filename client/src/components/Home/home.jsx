@@ -31,43 +31,45 @@ const Home = () => {
   };
 
   const renderCards = () => {
-    data.map((item) => (
-    let r = [], a = [];
-    item["railway"].forEach(obj => {
-        r.push(obj.transportation_name)
-    });
-    item["airport"].forEach(obj => {
-        a.push(obj.transportation_name)
-    });
-    return(
-    <div className="card" key={item.place_id}>
-        <div className="top-card">
-          <img src={Images[item.place_name]} className="img" alt={item.place_name} />
-          <div className="homeCardInfo">
-            <center>
-              <h2 className="title">{item.place_name}</h2>
-            </center>
-            <p className="bottom-text">Building: {item.building}</p>
-            <p className="bottom-text">State: {item.state}</p>
-            {r ? (
-                <></>
-            ) : (
-                <p className="bottom-text">Railway Station: {r}</p>
-            )}
-            {a ? (
-                <></>
-            ) : (
-                <p className="bottom-text">Airport: {a}</p>
-            )}
+    return data.map((item) => {
+      let r = [], a = [];
+      if (item["railway"]) {
+        item["railway"].forEach(obj => {
+          r.push(obj.transportation_name)
+        });
+      }
+      if (item["airport"]) {
+        item["airport"].forEach(obj => {
+          a.push(obj.transportation_name)
+        });
+      }
+      return (
+        <div className="card" key={item.place_id}>
+          <div className="top-card">
+            <img src={Images[item.place_name]} className="img" alt={item.place_name} />
+            <div className="homeCardInfo">
+              <center>
+                <h2 className="title">{item.place_name}</h2>
+              </center>
+              <p className="bottom-text">Building: {item.building}</p>
+              <p className="bottom-text">State: {item.state}</p>
+              {r.length > 0 && (
+                <p className="bottom-text">Railway Station: {r.join(', ')}</p>
+              )}
+              {a.length > 0 && (
+                <p className="bottom-text">Airport: {a.join(', ')}</p>
+              )}
+            </div>
+          </div>
+          <div className="actions-card">
+            <button className="btn" id="planBtn">Check Weather</button>
+            <button className="btn" id="planBtn">Let's plan</button>
           </div>
         </div>
-        <div className="actions-card">
-          <button className="btn" id="planBtn">Check Weather</button>
-          <button className="btn" id="planBtn">Let's plan</button>
-        </div>
-      </div>
-    ));
+      );
+    });
   };
+  
 
   return (
     <>
