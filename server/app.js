@@ -16,15 +16,54 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", async (request, response) => {
-  const query = `SELECT * FROM places;`;
-  db.all(query, (error, results) => {
-    if (error) {
-      console.error("Error fetching data:", error);
-      return response.status(500).json({ error: "Internal Server Error" });
-    }
-    response.json(results);
-  });
+  try {
+    const query = `SELECT * FROM places;`;
+    const places = await new Promise((resolve, reject) => {
+      db.all(query, (error, results) => {
+        if (error) {
+          console.error("Error fetching data:", error);
+          reject("Internal Server Error");
+        }
+        resolve(results);
+      });
+    });
+
+    const promises = places.map(async (obj) => {
+      const query1 = `SELECT transportation_name FROM transportation WHERE transportation_type = "Railway Station" AND region_id = ${obj.region_id}`;
+      const query2 = `SELECT transportation_name FROM transportation WHERE transportation_type = "Airport" AND region_id = ${obj.region_id}`;
+
+      const railway = await new Promise((resolve, reject) => {
+        db.all(query1, (error, results) => {
+          if (error) {
+            console.error("Error fetching railway data:", error);
+            reject("Internal Server Error");
+          }
+          resolve(results);
+        });
+      });
+
+      const airport = await new Promise((resolve, reject) => {
+        db.all(query2, (error, results) => {
+          if (error) {
+            console.error("Error fetching airport data:", error);
+            reject("Internal Server Error");
+          }
+          resolve(results);
+        });
+      });
+
+      return { ...obj, railway, airport };
+    });
+
+    const data = await Promise.all(promises);
+    console.log(data);
+    response.json(data);
+  } catch (error) {
+    console.error("Error:", error);
+    response.status(500).json({ error });
+  }
 });
+
 
 app.get("/:transport", async (request, response) => {
   const transport = request.params.transport;
