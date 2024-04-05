@@ -44,5 +44,13 @@ Content-Type: application/json
 ###
 
 GET http://localhost:4000/trains?from=Mumbai&to=Durgapura
+Content-Type: application/json
+
+###
+###
+
+GET http://localhost:4000/flights?from=Kolkata&to=Delhi
+
+Content-Type: application/json
 
 ###

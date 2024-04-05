@@ -63,7 +63,6 @@ app.get("/", async (request, response) => {
   }
 });
 
-
 app.get("/:transport", async (request, response) => {
   const transport = request.params.transport;
   const { from, to } = request.query;
@@ -78,7 +77,7 @@ app.get("/:transport", async (request, response) => {
 
   try {
     const query = `SELECT * FROM ${transport} WHERE departure = ? AND destination = ?`;
-    connection.query(query, [from, to], (error, results, fields) => {
+    db.all(query, [from, to], (error, results) => {
       if (error) {
         console.error("Error fetching data:", error);
         return response.status(500).json({ error: "Internal Server Error" });
