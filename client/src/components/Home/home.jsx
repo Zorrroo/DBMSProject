@@ -31,8 +31,16 @@ const Home = () => {
   };
 
   const renderCards = () => {
-    return data.map((item) => (
-      <div className="card" key={item.place_id}>
+    data.map((item) => (
+    let r = [], a = [];
+    item["railway"].forEach(obj => {
+        r.push(obj.transportation_name)
+    });
+    item["airport"].forEach(obj => {
+        a.push(obj.transportation_name)
+    });
+    return(
+    <div className="card" key={item.place_id}>
         <div className="top-card">
           <img src={Images[item.place_name]} className="img" alt={item.place_name} />
           <div className="homeCardInfo">
@@ -41,6 +49,16 @@ const Home = () => {
             </center>
             <p className="bottom-text">Building: {item.building}</p>
             <p className="bottom-text">State: {item.state}</p>
+            {r ? (
+                <></>
+            ) : (
+                <p className="bottom-text">Railway Station: {r}</p>
+            )}
+            {a ? (
+                <></>
+            ) : (
+                <p className="bottom-text">Airport: {a}</p>
+            )}
           </div>
         </div>
         <div className="actions-card">
